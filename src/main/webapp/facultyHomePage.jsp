@@ -25,7 +25,6 @@ h3 {
 			out.println("<h3>WELCOME " + facultyName + "</h3><br/>");
 			%>
 			<br />
-
 			<table class="table table-bordered">
 				<tr>
 					<th scope="col">STUDENT DETAILS</th>
@@ -39,32 +38,32 @@ h3 {
 					<th scope="col">ATTENDANCE</th>
 					<th scope="col">
 						<button type="button" class="btn btn-primary"
-							onclick="window.location.href='http://localhost:8080/app/markAttendance.jsp'">MARK
+							onclick="window.location.href='http://localhost:9005/markAttendance.jsp'">MARK
 						</button>
 						<button type="button" class="btn btn-primary"
-							onclick="window.location.href='http://localhost:8080/app/modifyAttendance.jsp'">EDIT
+							onclick="window.location.href='http://localhost:9005/modifyAttendance.jsp'">EDIT
 						</button>
 						<button type="button" class="btn btn-primary"
-							onclick="window.location.href='http://localhost:8080/app/allAttendanceDisplay.jsp'">VIEW
+							onclick="window.location.href='http://localhost:9005/allAttendanceDisplay.jsp'">VIEW
 						</button>
 					</th>
 				<tr>
 					<th scope="col">REASON INFORMATION</th>
 					<th scope="col">
 						<button type="button" class="btn btn-primary"
-							onclick="window.location.href='http://localhost:8080/app/viewReason.jsp'">REASON</button>
+							onclick="window.location.href='http://localhost:9005/viewReason.jsp'">REASON</button>
 						<button type="button" class="btn btn-primary"
-							onclick="window.location.href='http://localhost:8080/app/reasonInformationAdd.jsp'">ADD</button>
+							onclick="window.location.href='http://localhost:9005/reasonInformationAdd.jsp'">ADD</button>
 					</th>
 				</tr>
 				<tr>
 					<th scope="col">REPORTS</th>
 					<th scope="col">
 						<button type="button" class="btn btn-primary"
-							onclick="window.location.href='http://localhost:8080/app/absentReport.jsp'">ABSENT
+							onclick="window.location.href='http://localhost:9005/absentReport.jsp'">ABSENT
 							REPORT</button>
 						<button type="button" class="btn btn-primary"
-							onclick="window.location.href='http://localhost:8080/app/onDutyReport.jsp'">ONDUTY
+							onclick="window.location.href='http://localhost:9005/onDutyReport.jsp'">ONDUTY
 							REPORT</button>
 					</th>
 				</tr>

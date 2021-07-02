@@ -39,12 +39,10 @@ h1 {
 		crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 	<jsp:include page="header.jsp"></jsp:include>
 	<main class="container-fluid">
-
 		<div class="head">
 			<h1>DIVVLEARN SECONDARY SCHOOL</h1>
 		</div>
 		<br>
-
 		<div style="width: 400px; height: 450px; border: solid 1px #333333;">
 			<div style="background-color: #333333; color: #FFFFFF; padding: 3px;">
 				<h2>FACULTY LOGIN PORTAL</h2>
@@ -61,7 +59,7 @@ h1 {
 						id="facultyPassword" placeholder="Enter Your Password" required><br />
 					<br />
 					<button class="btn btn-primary">LOGIN</button>
-					<br /><br />
+					<br /> <br />
 					<p id="message"></p>
 				</form>
 				<div style="font-size: 11px; color: #cc0000; margin-top: 10px"></div>
@@ -71,38 +69,29 @@ h1 {
 	</main>
 	<script>
 	function facultyLogin(){
-		event.preventDefault();
-		let facultyName =document.getElementById("facultyName").value;
-		let facultyEmailId=document.getElementById("facultyEmailId").value;
-		let facultyPassword=document.getElementById("facultyPassword").value;
-		
-		let data={
-				"facultyName":facultyName,
-				"facultyEmailId":facultyEmailId,
-				"facultyPassword":facultyPassword,
-						
+			event.preventDefault();
+			let facultyName =document.getElementById("facultyName").value;
+			let facultyEmailId=document.getElementById("facultyEmailId").value;
+			let facultyPassword=document.getElementById("facultyPassword").value;	
+			let data={
+					"facultyName":facultyName,
+					"facultyEmailId":facultyEmailId,
+					"facultyPassword":facultyPassword					
+			}
+			let url="facultyLogin";
+			content="";
+			axios.post(url,data).then(res=>{
+				let data = res.data;
+				console.log(data.infoMessage);
+				content+=data.infoMessage;
+				document.querySelector("#message").innerHTML= content; 
+				setTimeout(function(){window.location="facultyHomePage.jsp";},2000);				
+			}).catch(err=>{
+				 let data = err.response.data;
+				content+=data.errorMessage;
+				document.querySelector("#message").innerHTML= content; 			
+			});		
 		}
-		let url="facultyLogin";
-		content="";
-		axios.post(url,data).then(res=>{
-			console.log()
-			console.log("Success");
-			let data = res.data;
-			console.log(data.infoMessage);
-			content+=data.infoMessage;
-			document.querySelector("#message").innerHTML= content; 
-			setTimeout(function(){window.location="facultyHomePage.jsp";},2000);
-			
-			
-}).catch(err=>{
-	console.log("Error");
-	 let data = err.response.data;
-	content+=data.errorMessage;
-	document.querySelector("#message").innerHTML= content; 
-			
-		});
-		
-}
 	</script>
 </body>
 </html>

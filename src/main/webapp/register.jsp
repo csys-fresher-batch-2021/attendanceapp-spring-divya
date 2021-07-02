@@ -21,9 +21,7 @@ h2 {
 	text-align: center;
 }
 </style>
-
 </head>
-
 <body>
 	<script
 		src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
@@ -89,68 +87,66 @@ h2 {
 		</form>
 	</main>
 	<script>
-	function registerData(){
-		event.preventDefault();
-		let studentRollNumber=document.getElementById("studentRollNumber").value;
-		let studentName=document.getElementById("studentName").value;
-		let fatherName=document.getElementById("fatherName").value;
-		let motherName=document.getElementById("motherName").value;
-		let studentEmailId=document.getElementById("studentEmailId").value;
-		let studentPassword=document.getElementById("studentPassword").value;
-		let gender="";
-		  if(document.getElementById('male').checked) {   
-                 gender  = document.getElementById("male").value;   
-          }   
-          else if(document.getElementById('female').checked) {   
-        	  gender  = document.getElementById("female").value;
-          }    
-          else {   
-              gender  = document.getElementById("others").value;   
-          }
-		let studentAddress=document.getElementById("studentAddress").value;
-		let studentCity=document.getElementById("studentCity").value;
-		let occupation=document.getElementById("occupation").value;
-		let studentBloodGroup=document.getElementById("studentBloodGroup").value;
-		let studentStandard=document.getElementById("studentStandard").value;
-		let facultyEmailId=document.getElementById("facultyEmailId").value;
-		let parentMobileNumber=document.getElementById("parentMobileNumber").value;
-		let dateOfBirth=document.getElementById("dateOfBirth").value;
-		
-		let data={
-				"studentRollNumber":studentRollNumber,
-				"studentName":studentName,
-				"fatherName":fatherName,
-				"motherName":motherName,
-				"studentEmailId":studentEmailId,
-				"studentPassword":studentPassword,
-				"gender":gender,
-				"studentAddress":studentAddress,
-				"studentCity":studentCity,
-				"occupation":occupation,
-				"studentBloodGroup":studentBloodGroup,
-				"studentStandard":studentStandard,
-				"facultyEmailId":facultyEmailId,
-				"parentMobileNumber":parentMobileNumber,
-				"dateOfBirth":dateOfBirth			
+		function registerData(){
+			event.preventDefault();
+			let studentRollNumber=document.getElementById("studentRollNumber").value;
+			let studentName=document.getElementById("studentName").value;
+			let fatherName=document.getElementById("fatherName").value;
+			let motherName=document.getElementById("motherName").value;
+			let studentEmailId=document.getElementById("studentEmailId").value;
+			let studentPassword=document.getElementById("studentPassword").value;
+			let gender="";
+			  if(document.getElementById('male').checked) {   
+	                 gender  = document.getElementById("male").value;   
+	          }   
+	          else if(document.getElementById('female').checked) {   
+	        	  gender  = document.getElementById("female").value;
+	          }    
+	          else {   
+	              gender  = document.getElementById("others").value;   
+	          }
+			let studentAddress=document.getElementById("studentAddress").value;
+			let studentCity=document.getElementById("studentCity").value;
+			let occupation=document.getElementById("occupation").value;
+			let studentBloodGroup=document.getElementById("studentBloodGroup").value;
+			let studentStandard=document.getElementById("studentStandard").value;
+			let facultyEmailId=document.getElementById("facultyEmailId").value;
+			let parentMobileNumber=document.getElementById("parentMobileNumber").value;
+			let dateOfBirth=document.getElementById("dateOfBirth").value;
+			let data={
+					"studentRollNumber":studentRollNumber,
+					"studentName":studentName,
+					"fatherName":fatherName,
+					"motherName":motherName,
+					"studentEmailId":studentEmailId,
+					"studentPassword":studentPassword,
+					"gender":gender,
+					"studentAddress":studentAddress,
+					"studentCity":studentCity,
+					"occupation":occupation,
+					"studentBloodGroup":studentBloodGroup,
+					"studentStandard":studentStandard,
+					"facultyEmailId":facultyEmailId,
+					"parentMobileNumber":parentMobileNumber,
+					"dateOfBirth":dateOfBirth			
+			}
+			let url="insert";
+			let content="";
+			axios.post(url,data).then(res=>{
+				console.log()
+				console.log("Success");
+				let data = res.data;
+				console.log(data.infoMessage);
+				content+=data.infoMessage;
+				document.querySelector("#message").innerHTML= content; 				
+			}).catch(err=>{
+				console.log("Error");
+				 let data = err.response.data;
+				content+=data.errorMessage;
+				document.querySelector("#message").innerHTML= content; 
+						
+			});
 		}
-		let url="insert";
-		let content="";
-		axios.post(url,data).then(res=>{
-			console.log()
-			console.log("Success");
-			let data = res.data;
-			console.log(data.infoMessage);
-			content+=data.infoMessage;
-			document.querySelector("#message").innerHTML= content; 			
-			
-}).catch(err=>{
-	console.log("Error");
-	 let data = err.response.data;
-	content+=data.errorMessage;
-	document.querySelector("#message").innerHTML= content; 
-			
-		});
-}
 	</script>
 </body>
 </html>

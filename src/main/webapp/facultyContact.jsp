@@ -8,7 +8,6 @@
 <%
 String studentRollNumber = (String) session.getAttribute("LOGGED_IN_USER_NO");
 %>
-
 <style>
 #facultyTable {
 	background-color: #AAB7B8;

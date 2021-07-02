@@ -26,7 +26,7 @@ h3 {
 			<figcaption>
 				<h3>DIVVLEARN STUDENT INFORMATION</h3>
 				<br />
-			</figcaption>	
+			</figcaption>
 
 			<table class="table" border="1">
 				<thead class="thead-dark">
@@ -37,82 +37,79 @@ h3 {
 				<tbody id="studentInformation">
 				</tbody>
 			</table>
-			
 		</figure>
 	</main>
 	<script>
-	function onLoadGetId(){
-		let params = new URLSearchParams(window.location.search);
-		let studentRollNumber = params.get('studentRollNumber');
-		getStudentInformation(studentRollNumber);
-		}
-	function getStudentInformation(studentRollNumber) {
-		let url ="getStudentInformation/"+studentRollNumber;
-		axios.get(url).then(res=> {
-			console.log(res.data);
-			let informations=res.data;
-			let i=0;
-			let content="";
-			for( let information of informations) {
-				content+="<tr>";
-				content+="<th>NAME</th>";
-				content+="<td>"+information.studentName+"</td>";
-				content+="</tr>";
-				content+="<tr>";
-				content+="<th>ROLL NUMBER</th>";
-				content+="<td>"+information.studentRollNumber+"</td>";
-				content+="</tr>";
-				content+="<tr>";
-				content+="<th>FATHER NAME</th>";
-				content+="<td>"+information.fatherName+"</td>";
-				content+="</tr>";
-				content+="<tr>";
-				content+="<th>MOTHER NAME</th>";
-				content+="<td>"+information.motherName+"</td>";
-				content+="</tr>";
-				content+="<tr>";
-				content+="<th>EMAIL ID</th>";
-				content+="<td>"+information.studentEmailId+"</td>";
-				content+="</tr>";
-				content+="<tr>";
-				content+="<th>GENDER</th>";
-				content+="<td>"+information.gender+"</td>";
-				content+="</tr>";
-				content+="<tr>";
-				content+="<th>ADDRESS</th>";
-				content+="<td>"+information.address+"</td>";
-				content+="</tr>";
-				content+="<tr>";
-				content+="<th>CITY</th>";
-				content+="<td>"+information.city+"</td>";
-				content+="</tr>";
-				content+="<tr>";
-				content+="<th>PARENT OCCUPATION</th>";
-				content+="<td>"+information.parentOccupation+"</td>";
-				content+="</tr>";
-				content+="<tr>";
-				content+="<th>BLOOD GROUP</th>";
-				content+="<td>"+information.studentBloodGroup+"</td>";
-				content+="</tr>";
-				content+="<tr>";
-				content+="<th>STANDARD</th>";
-				content+="<td>"+information.studentStandard+"</td>";
-				content+="</tr>";
-				content+="<tr>";
-				content+="<th>PARENT MOBILE NUMBER</th>";
-				content+="<td>"+information.parentMobileNumber+"</td>";
-				content+="</tr>";
-				content+="<tr>";
-				content+="<th>DATE OF BIRTH</th>";
-				content+="<td>"+information.dateOfBirth+"</td>";
-				content+="</tr>";
-			}		
-			console.log(content);
-			document.querySelector("#studentInformation").innerHTML=content;
-			
-				
-		});
-	 }
+		function onLoadGetId(){
+			let params = new URLSearchParams(window.location.search);
+			let studentRollNumber = params.get('studentRollNumber');
+			getStudentInformation(studentRollNumber);
+			}
+		function getStudentInformation(studentRollNumber) {
+			let url ="getStudentInformation/"+studentRollNumber;
+			axios.get(url).then(res=> {
+				console.log(res.data);
+				let informations=res.data;
+				let i=0;
+				let content="";
+				for( let information of informations) {
+					content+="<tr>";
+					content+="<th>NAME</th>";
+					content+="<td>"+information.studentName+"</td>";
+					content+="</tr>";
+					content+="<tr>";
+					content+="<th>ROLL NUMBER</th>";
+					content+="<td>"+information.studentRollNumber+"</td>";
+					content+="</tr>";
+					content+="<tr>";
+					content+="<th>FATHER NAME</th>";
+					content+="<td>"+information.fatherName+"</td>";
+					content+="</tr>";
+					content+="<tr>";
+					content+="<th>MOTHER NAME</th>";
+					content+="<td>"+information.motherName+"</td>";
+					content+="</tr>";
+					content+="<tr>";
+					content+="<th>EMAIL ID</th>";
+					content+="<td>"+information.studentEmailId+"</td>";
+					content+="</tr>";
+					content+="<tr>";
+					content+="<th>GENDER</th>";
+					content+="<td>"+information.gender+"</td>";
+					content+="</tr>";
+					content+="<tr>";
+					content+="<th>ADDRESS</th>";
+					content+="<td>"+information.address+"</td>";
+					content+="</tr>";
+					content+="<tr>";
+					content+="<th>CITY</th>";
+					content+="<td>"+information.city+"</td>";
+					content+="</tr>";
+					content+="<tr>";
+					content+="<th>PARENT OCCUPATION</th>";
+					content+="<td>"+information.parentOccupation+"</td>";
+					content+="</tr>";
+					content+="<tr>";
+					content+="<th>BLOOD GROUP</th>";
+					content+="<td>"+information.studentBloodGroup+"</td>";
+					content+="</tr>";
+					content+="<tr>";
+					content+="<th>STANDARD</th>";
+					content+="<td>"+information.studentStandard+"</td>";
+					content+="</tr>";
+					content+="<tr>";
+					content+="<th>PARENT MOBILE NUMBER</th>";
+					content+="<td>"+information.parentMobileNumber+"</td>";
+					content+="</tr>";
+					content+="<tr>";
+					content+="<th>DATE OF BIRTH</th>";
+					content+="<td>"+information.dateOfBirth+"</td>";
+					content+="</tr>";
+				}		
+				console.log(content);
+				document.querySelector("#studentInformation").innerHTML=content;			
+			});
+		 }
 	</script>
 </body>
 </html>

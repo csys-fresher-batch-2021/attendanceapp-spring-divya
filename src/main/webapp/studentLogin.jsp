@@ -70,41 +70,36 @@ h1 {
 		</div>
 	</main>
 	<script>
-	function studentLogin(){			
-		event.preventDefault();
-		let studentRollNumber=document.getElementById("studentRollNumber").value;
-		let studentName =document.getElementById("studentName").value;
-		let studentPassword=document.getElementById("studentPassword").value;
-		
-		let data={
-				
-				"studentRollNumber":studentRollNumber,
-				"studentName":studentName,
-				"studentPassword":studentPassword,
-						
+		function studentLogin(){			
+			event.preventDefault();
+			let studentRollNumber=document.getElementById("studentRollNumber").value;
+			let studentName =document.getElementById("studentName").value;
+			let studentPassword=document.getElementById("studentPassword").value;
+			let data={
+					
+					"studentRollNumber":studentRollNumber,
+					"studentName":studentName,
+					"studentPassword":studentPassword,
+							
+			}
+			console.log(data);
+			let url="studentLogin";
+			content="";
+			axios.post(url,data).then(res=>{
+				console.log()
+				console.log("Success");
+				let data = res.data;
+				console.log(data.infoMessage);
+				content+=data.infoMessage;
+				document.querySelector("#message").innerHTML= content; 
+				setTimeout(function(){window.location="studentHomePage.jsp";},2000);
+			}).catch(err=>{
+				console.log("Error");
+				 let data = err.response.data;
+				content+=data.errorMessage;
+				document.querySelector("#message").innerHTML= content; 		
+			});
 		}
-		console.log(data);
-		let url="studentLogin";
-		content="";
-		axios.post(url,data).then(res=>{
-			console.log()
-			console.log("Success");
-			let data = res.data;
-			console.log(data.infoMessage);
-			content+=data.infoMessage;
-			document.querySelector("#message").innerHTML= content; 
-			setTimeout(function(){window.location="studentHomePage.jsp";},2000);
-			
-			
-}).catch(err=>{
-	console.log("Error");
-	 let data = err.response.data;
-	content+=data.errorMessage;
-	document.querySelector("#message").innerHTML= content; 
-			
-		});
-	}
 	</script>
-
 </body>
 </html>

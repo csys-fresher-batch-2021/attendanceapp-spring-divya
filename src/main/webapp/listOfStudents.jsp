@@ -61,53 +61,47 @@ p {
 		</figure>
 	</main>
 	<script>
-	function onLoadGetId(){
-		let params = new URLSearchParams(window.location.search);
-		let facultyId = params.get('facultyId');
-		getAllStudents(facultyId);
-		}
-	function getAllStudents(facultyId) {
-		let url ="getStudentsList/"+facultyId;
-		axios.get(url).then(res=> {
-			console.log(res.data);
-			let lists=res.data;
-			let i=0;
-			let content="";
-			for( let list of lists) {
-				content+="<tr>";
-				content+="<td>"+(++i)+"</td>";
-				content+="<td>"+list.studentName+"</td>";
-				content+="<td>"+list.studentRollNumber+"</td>";
-				content+="<td><a href='studentInformation.jsp?studentRollNumber="+list.studentRollNumber+"'>VIEW</a></td>";
-				content+="</tr>";
-				
-			}		
-			console.log(content);
-			document.querySelector("#listTable").innerHTML=content;
-			
-				
-		});
-	 }
+		function onLoadGetId(){
+			let params = new URLSearchParams(window.location.search);
+			let facultyId = params.get('facultyId');
+			getAllStudents(facultyId);
+			}
+		function getAllStudents(facultyId) {
+			let url ="getStudentsList/"+facultyId;
+			axios.get(url).then(res=> {
+				console.log(res.data);
+				let lists=res.data;
+				let i=0;
+				let content="";
+				for( let list of lists) {
+					content+="<tr>";
+					content+="<td>"+(++i)+"</td>";
+					content+="<td>"+list.studentName+"</td>";
+					content+="<td>"+list.studentRollNumber+"</td>";
+					content+="<td><a href='studentInformation.jsp?studentRollNumber="+list.studentRollNumber+"'>VIEW</a></td>";
+					content+="</tr>";		
+				}		
+				document.querySelector("#listTable").innerHTML=content;		
+			});
+		 }
 		function studentDetails() {
-			var input, filter, table, tr, td, i, txtValue;
-			input = document.getElementById("myInput");
-			filter = input.value.toUpperCase();
-			table = document.getElementById("myDetails");
-			tr = table.getElementsByTagName("tr");
-			for (i = 0; i < tr.length; i++) {
-				td = tr[i].getElementsByTagName("td")[2];
-				if (td) {
-					txtValue = td.textContent || td.innerText;
-					if (txtValue.toUpperCase().indexOf(filter) > -1) {
-						tr[i].style.display = "";
-					} else {
-						tr[i].style.display = "none";
+				var input, filter, table, tr, td, i, txtValue;
+				input = document.getElementById("myInput");
+				filter = input.value.toUpperCase();
+				table = document.getElementById("myDetails");
+				tr = table.getElementsByTagName("tr");
+				for (i = 0; i < tr.length; i++) {
+					td = tr[i].getElementsByTagName("td")[2];
+					if (td) {
+						txtValue = td.textContent || td.innerText;
+						if (txtValue.toUpperCase().indexOf(filter) > -1) {
+							tr[i].style.display = "";
+						} else {
+							tr[i].style.display = "none";
+						}
 					}
 				}
-			}
-		}
-		
-		
+			}	
 	</script>
 </body>
 </html>
