@@ -35,19 +35,6 @@ h3 {
 					</th>
 				</tr>
 				<tr>
-					<th scope="col">ATTENDANCE</th>
-					<th scope="col">
-						<button type="button" class="btn btn-primary"
-							onclick="window.location.href='http://localhost:9005/markAttendance.jsp'">MARK
-						</button>
-						<button type="button" class="btn btn-primary"
-							onclick="window.location.href='http://localhost:9005/modifyAttendance.jsp'">EDIT
-						</button>
-						<button type="button" class="btn btn-primary"
-							onclick="window.location.href='http://localhost:9005/allAttendanceDisplay.jsp'">VIEW
-						</button>
-					</th>
-				<tr>
 					<th scope="col">REASON INFORMATION</th>
 					<th scope="col">
 						<button type="button" class="btn btn-primary"
@@ -60,10 +47,10 @@ h3 {
 					<th scope="col">REPORTS</th>
 					<th scope="col">
 						<button type="button" class="btn btn-primary"
-							onclick="window.location.href='http://localhost:9005/absentReport.jsp'">ABSENT
+							onclick="window.location.href='http://localhost:9005/absentReport.jsp?facultyId=<%=facultyId%>'">ABSENT
 							REPORT</button>
 						<button type="button" class="btn btn-primary"
-							onclick="window.location.href='http://localhost:9005/onDutyReport.jsp'">ONDUTY
+							onclick="window.location.href='http://localhost:9005/onDutyReport.jsp?facultyId=<%=facultyId%>'">ONDUTY
 							REPORT</button>
 					</th>
 				</tr>

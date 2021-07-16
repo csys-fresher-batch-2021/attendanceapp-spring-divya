@@ -2,7 +2,6 @@ package in.divya.controller;
 
 import java.io.IOException;
 
-
 import java.time.LocalDate;
 import java.util.List;
 
@@ -13,6 +12,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -152,7 +152,7 @@ public class StudentController {
 	 * @return
 	 */
 	@GetMapping("getStudentsList/{id}")
-	public List<in.divya.model.Student> getStudentsList(@PathVariable("id") String facultyId) {
+	public List<Student> getStudentsList(@PathVariable("id") String facultyId) {
 		return studentService.getStudentsList(facultyId);
 	}
 
@@ -183,4 +183,22 @@ public class StudentController {
 		response.sendRedirect("index.jsp");
 	}
 
+	/**
+	 * This method is used to delete student all details.
+	 * 
+	 * @param studentRollNumber
+	 * @return
+	 * @throws InValidCredentialsException
+	 */
+
+	@DeleteMapping("deleteStudent/{id}")
+	public ResponseEntity<MessageUtil> deleteStudent(@PathVariable("id") String studentRollNumber)
+			throws InValidCredentialsException {
+		try {
+			studentService.removeStudent(studentRollNumber);
+		} catch (Exception e) {
+			throw new InValidCredentialsException(e.getMessage());
+		}
+		return new ResponseEntity<>(message, HttpStatus.OK);
+	}
 }

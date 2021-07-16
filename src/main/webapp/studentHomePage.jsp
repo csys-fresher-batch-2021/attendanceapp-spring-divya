@@ -27,14 +27,6 @@ h3 {
 			<br />
 			<table class="table table-bordered">
 				<tr>
-					<th scope="col">ATTENDANCE DETAILS</th>
-					<th scope="col">
-						<button type="button" class="btn btn-primary"
-							onclick="window.location.href='http://localhost:9005/displayAttendance.jsp'">
-							VIEW ATTENDANCE</button>
-					</th>
-				</tr>
-				<tr>
 					<th scope="col">ATTENDANCE INCHARGE</th>
 					<th scope="col">
 						<button type="button" class="btn btn-primary"

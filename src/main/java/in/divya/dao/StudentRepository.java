@@ -24,6 +24,7 @@ public class StudentRepository {
 	private final static String SQL2 = "select student_roll_number,student_name,student_password from student_spring";
 	private final static String SQL3 = "select student_name,student_roll_number from student_spring where faculty_email_id=? order by student_roll_number";
 	private final static String SQL4 = "select student_roll_number,student_name,father_name,mother_name,student_email_id,gender,address,city,parent_occupation,student_blood_group,student_standard,parent_mobile_number,date_of_birth from student_spring where student_roll_number=?";
+	private final static String SQL5 = "delete from student_spring where student_roll_number=?";
 
 	/**
 	 * This method is used to add student details into database.
@@ -75,4 +76,15 @@ public class StudentRepository {
 		return jdbctemplate.query(SQL4, BeanPropertyRowMapper.newInstance(Student.class), studentRollNumber);
 	}
 
+	/**
+	 * This method is used to delete the student all details.
+	 * 
+	 * @param studentRollNumber
+	 * @return
+	 */
+
+	public int deleteStudent(String studentRollNumber) {
+		int deleteStudent = jdbctemplate.update(SQL5, studentRollNumber);
+		return deleteStudent;
+	}
 }

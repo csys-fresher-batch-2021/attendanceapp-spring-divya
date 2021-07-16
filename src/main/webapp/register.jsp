@@ -32,7 +32,7 @@ h2 {
 		<br />
 
 		<button class="btn btn-link"
-			onclick="window.location.href='http://localhost:8080/app/index.jsp'">BACK</button>
+			onclick="window.location.href='http://localhost:9005/index.jsp'">BACK</button>
 		<h2>REGISTRATION FORM</h2>
 		<br /> <br />
 		<!--  Get the StudentDetails -->
@@ -133,14 +133,11 @@ h2 {
 			let url="insert";
 			let content="";
 			axios.post(url,data).then(res=>{
-				console.log()
-				console.log("Success");
 				let data = res.data;
 				console.log(data.infoMessage);
 				content+=data.infoMessage;
 				document.querySelector("#message").innerHTML= content; 				
 			}).catch(err=>{
-				console.log("Error");
 				 let data = err.response.data;
 				content+=data.errorMessage;
 				document.querySelector("#message").innerHTML= content; 

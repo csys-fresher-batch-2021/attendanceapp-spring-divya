@@ -1,0 +1,1 @@
+create table reason_spring(student_roll_number varchar(30) not null,reason_date date,attendance_type varchar(10)not null,faculty_email_id varchar(30)not null,reason varchar(70)not null,CONSTRAINT FK_roll_no FOREIGN KEY (student_roll_number) REFERENCES student_spring(student_roll_number) on delete cascade, CONSTRAINT U_reason UNIQUE (student_roll_number,reason_date));

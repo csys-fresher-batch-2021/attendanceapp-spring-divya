@@ -20,7 +20,12 @@ h3 {
 	<jsp:include page="header.jsp"></jsp:include>
 	<br />
 	<main class="container-fluid">
-		<a href="listOfStudents.jsp">Previous page</a><br />
+		<%
+		String facultyId = (String) session.getAttribute("LOGGED_IN_USER_ID");
+		%>
+		<a
+			href="http://localhost:9005/listOfStudents.jsp?facultyId=<%=facultyId%>">Previous
+			page</a><br />
 		<!-- Display  Student Information-->
 		<figure>
 			<figcaption>

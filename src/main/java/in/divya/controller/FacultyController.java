@@ -5,7 +5,6 @@ package in.divya.controller;
 
 import java.util.List;
 
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -65,7 +64,6 @@ public class FacultyController {
 			throw new InValidCredentialsException(e.getMessage());
 		}
 		return new ResponseEntity<>(message, HttpStatus.OK);
-
 	}
 
 	/**
@@ -79,5 +77,4 @@ public class FacultyController {
 	public List<Faculty> getFacultyData(@PathVariable("id") String studentRollNumber) {
 		return facultyService.getFacultyData(studentRollNumber);
 	}
-
 }

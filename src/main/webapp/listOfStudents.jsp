@@ -5,9 +5,6 @@
 <head>
 <meta charset="ISO-8859-1">
 <title>List Of Students</title>
-<%
-String facultyId = (String) session.getAttribute("LOGGED_IN_USER_ID");
-%>
 <style>
 h3 {
 	color: blue;
@@ -42,7 +39,7 @@ p {
 			<label>SEARCH STUDENT : </label>
 			<input type="text" id="myInput" onkeyup="studentDetails()"
 				placeholder="ENTER ROLL NUMBER" title="Type in a roll number">
-
+			<p id="message"></p>
 			<table class="table" border="1" id="myDetails">
 
 				<thead class="thead-dark">
@@ -51,6 +48,7 @@ p {
 						<th scope="col">STUDENT NAME</th>
 						<th scope="col">ROLL NUMBER</th>
 						<th scope="col">PERSONAL INFORMATION</th>
+						<th scope="col">DROP OUT</th>
 					</tr>
 				</thead>
 				<tbody id="listTable">
@@ -79,6 +77,7 @@ p {
 					content+="<td>"+list.studentName+"</td>";
 					content+="<td>"+list.studentRollNumber+"</td>";
 					content+="<td><a href='studentInformation.jsp?studentRollNumber="+list.studentRollNumber+"'>VIEW</a></td>";
+					content+="<td><button type='button' onclick=deleteRecord('"+ list.studentRollNumber +"') class='btn btn-primary'>DROP OUT</button></td>";
 					content+="</tr>";		
 				}		
 				document.querySelector("#listTable").innerHTML=content;		
@@ -101,7 +100,25 @@ p {
 						}
 					}
 				}
-			}	
+			}
+		function deleteRecord(id){
+			let conform = confirm("Do you want to delete ?");
+			alert("confirm");
+			let url ="deleteStudent/"+ id;
+			if(conform){
+				axios.delete(url).then(res=>{
+					let data = res.data;
+					console.log(data.infoMessage);
+					content=data.infoMessage;
+					document.querySelector("#message").innerHTML= content; 	
+				}).catch(err=>{
+					 let data = err.response.data;
+					content=data.errorMessage;
+					document.querySelector("#message").innerHTML= content; 
+					
+				});
+			}
+		}
 	</script>
 </body>
 </html>

@@ -103,4 +103,25 @@ public class StudentService {
 	public List<Student> getStudentInformation(String studentRollNumber) {
 		return studentRepository.findStudentById(studentRollNumber);
 	}
+
+	/**
+	 * This method is used to delete the student all details.
+	 * 
+	 * @param studentRollNumber
+	 * @throws InValidCredentialsException
+	 */
+
+	public void removeStudent(String studentRollNumber) throws InValidCredentialsException {
+		int isRemoveStudent = 0;
+		try {
+			isRemoveStudent = studentRepository.deleteStudent(studentRollNumber);
+			if (isRemoveStudent > 0) {
+				message.setInfoMessage("STUDENT " + studentRollNumber + " REMOVED SUCCESSFULLY");
+			} else {
+				throw new InValidCredentialsException("REMOVE PROCESS IS FAILED");
+			}
+		} catch (Exception e) {
+			throw new InValidCredentialsException("REMOVE PROCESS IS FAILED");
+		}
+	}
 }
